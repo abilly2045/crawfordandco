@@ -1,0 +1,30 @@
+# crawfordandco
+Some_Automation _Job_Specs
+using OpenQA.Selenium;
+using OpenQA.Selenium.Chrome;
+using System;
+using System.Threading;
+
+namespace Opening_Browser_Acc
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            //Opening a chrome webdriver
+            IWebDriver webDriver = new ChromeDriver();
+
+            //Navigating to the URL
+            webDriver.Navigate().GoToUrl("http://www.crawco.co.uk");
+
+            //Maximising the page
+            webDriver.Manage().Window.Maximize();
+
+            //Keep the page on for some seconds
+            Thread.Sleep(8000);
+
+            //Close te webpage
+            webDriver.Quit();
+        }
+    }
+}
