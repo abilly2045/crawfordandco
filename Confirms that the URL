@@ -1,0 +1,33 @@
+// NUnit 3 tests
+// See documentation : https://github.com/nunit/docs/wiki/NUnit-Documentation
+using NUnit.Framework;
+using OpenQA.Selenium;
+using OpenQA.Selenium.Chrome;
+using System;
+using System.Threading;
+
+namespace Facebook_Confirmation
+{
+    [TestFixture]
+    public class TestClass
+    {
+        [Test]
+        public void Confirming_Page()
+        {
+           
+            By CookieAgreed = By.XPath("//button[@title='Allow All Cookies']");
+
+            IWebDriver webDriver = new ChromeDriver();       //Chrome WEb_Driver Instant
+
+            webDriver.Navigate().GoToUrl("https://www.facebook.com/crawfordandco");    //Navigating to page
+
+            webDriver.FindElement(CookieAgreed).Click();     
+            Thread.Sleep(5000);
+            webDriver.Manage().Window.Maximize();
+
+            Console.WriteLine("URL Confirmed");   
+
+        }
+    }
+}
+
