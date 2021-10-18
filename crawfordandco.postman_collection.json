@@ -1,0 +1,161 @@
+{
+	"info": {
+		"_postman_id": "230ab605-4f45-4d8f-be0b-6a559799f67a",
+		"name": "crawfordandco",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "GET-Passed",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Confirms the first_name\", () => {\r",
+							"  const responseJson = pm.response.json();\r",
+							"  pm.expect(responseJson.data.first_name).to.eql(\"Eve\");\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Confirms the last_name \", () => {\r",
+							"  const responseJson = pm.response.json();\r",
+							"  pm.expect(responseJson.data.last_name).to.eql(\"Holt\");\r",
+							" \r",
+							"});\r",
+							"\r",
+							"pm.test(\"Get Request Statue\",  () => {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://reqres.in/api/users/4",
+					"protocol": "https",
+					"host": [
+						"reqres",
+						"in"
+					],
+					"path": [
+						"api",
+						"users",
+						"4"
+					]
+				},
+				"description": "Value Expected\r\nfirst_name = Eve, \r\nlast_name = Holt"
+			},
+			"response": []
+		},
+		{
+			"name": "Get-Failed",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"first_name\", function () {\r",
+							"    var jsonData = pm.response.json();\r",
+							"    pm.expect(jsonData.data.first_name).to.eql(\"Sergio\");\r",
+							"});\r",
+							"\r",
+							"pm.test(\"last_name\", function () {\r",
+							"    var jsonData = pm.response.json();\r",
+							"    pm.expect(jsonData.data.last_name).to.eql(\"Ramos\");\r",
+							"});\r",
+							"pm.test(\"Get Request Statue\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://reqres.in/api/users/6",
+					"protocol": "https",
+					"host": [
+						"reqres",
+						"in"
+					],
+					"path": [
+						"api",
+						"users",
+						"6"
+					]
+				},
+				"description": "Given_Value \r\nfirst_name = Sergio, \r\nlast_name = Ramos"
+			},
+			"response": []
+		},
+		{
+			"name": "Get-Passed",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test('Satus code should be 404', ()=>{\r",
+							"    pm.response.to.have.status(404);\r",
+							"})\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://reqres.in/api/users/23",
+					"protocol": "https",
+					"host": [
+						"reqres",
+						"in"
+					],
+					"path": [
+						"api",
+						"users",
+						"23"
+					]
+				},
+				"description": "Status Confirmed Okay"
+			},
+			"response": []
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "URL",
+			"value": ""
+		}
+	]
+}
